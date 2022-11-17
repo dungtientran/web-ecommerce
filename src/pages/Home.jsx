@@ -4,7 +4,6 @@ import banner from '../assets/image/herobanner.png';
 import SubNav from '../components/subnav/SubNav';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import ContactBanner from '../components/UI/ContactBanner';
 import BuyFast from '../components/UI/BuyFast';
 import ProductList from '../components/UI/ProductList';
 import { useSelector } from 'react-redux';
@@ -57,7 +56,6 @@ const Home = () => {
                 <h1 className='text-3xl font-semibold mt-24 mb-6'>CHUỘT</h1>
                 <ProductList products={mouse} />
             </section>
-            <ContactBanner />
             <BuyFast />
         </>
     );

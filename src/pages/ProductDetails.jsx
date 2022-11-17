@@ -5,7 +5,6 @@ import AddressShop from '../components/UI/Deltails/AddressShop';
 import ImgSlider from '../components/UI/Deltails/ImgSlider';
 import Service from '../components/UI/Deltails/Service';
 import SingleCartInfor from '../components/UI/Deltails/SingleCartInfor';
-
 const ProductDetails = () => {
     const { id } = useParams();
     const listProduct = JSON.parse(localStorage.getItem('All_Producst'));
@@ -20,9 +19,8 @@ const ProductDetails = () => {
         }
         return item.thumbnail
     })
-
     return (
-        <div className='flex justify-between pt-[20px] w-[60%] m-auto'>
+        <div className='flex justify-between pt-[20px] w-[60%] m-auto h-screen'>
             <ImgSlider imgs={product} />
             <div className='w-[60%] space-y-4'>
                 <SingleCartInfor products={products} thumbnail={thumbnail[0]} id={id} />

@@ -3,7 +3,7 @@ import Routers from '../../router/Routers';
 import Footer from '../footer/Footer';
 import Header from '../header/Header';
 import SideCart from '../sidecart/SideCart';
-
+import ContactBanner from '../UI/ContactBanner'
 const Layout = () => {
     return (
         <>
@@ -12,6 +12,7 @@ const Layout = () => {
             <div>
                 <Routers />
             </div>
+            <ContactBanner />
             <Footer />
         </>
     );

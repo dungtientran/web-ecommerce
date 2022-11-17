@@ -1,13 +1,15 @@
 
 import { configureStore } from '@reduxjs/toolkit';
 import allProductsReducer  from './slice/allProductsSlice';
-import openReducer from './slice/openSlice'
+import openReducer from './slice/openSlice';
+import navBarRuducer from './slice/navBarSlide'
 
 
 const store = configureStore({
     reducer: {
         open: openReducer,
-        allproducts: allProductsReducer
+        allproducts: allProductsReducer,
+        transferNavBar: navBarRuducer
     }
 })
 

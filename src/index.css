@@ -28,3 +28,8 @@ a {
 ul li:not(:first-child) {
     display: none;
 }
+
+.hoverButonAddCart:hover .notificationChoose {
+    /* display: block; */
+    background:  #fff;
+}

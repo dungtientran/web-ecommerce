@@ -6,7 +6,7 @@ import { buyFast, openBuyFast } from '../../redux/slice/openSlice';
 const ProductCart = ({ item }) => {
 
     const dispatch = useDispatch();
-    const haldleClickBuyFast = (e) => {
+    const haldleClickBuyFast = () => {
         // (e) => e.stopPropagation()
         dispatch(openBuyFast(!null))
         dispatch(buyFast(item._id))

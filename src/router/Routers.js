@@ -7,11 +7,12 @@ import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import ProductDetails from '../pages/ProductDetails';
 import Contact from '../pages/Contact';
-import Iphone from '../pages/Iphone';
+import Filter from '../components/filter/Filter';
+import PageProducts from '../pages/PageProducts';
 
 const Routers = () => {
     return <Routes>
-        <Route path='/' element={<Navigate to='home'/>}/> 
+        <Route path='/' element={<Navigate to='home' />} />
         <Route path='home' element={<Home />} />
         <Route path='cart' element={<Cart />} />
         <Route path='checkout' element={<Checkout />} />
@@ -19,9 +20,10 @@ const Routers = () => {
         <Route path='signup' element={<Signup />} />
         <Route path='product/:id' element={<ProductDetails />} />
         <Route path='contact' element={<Contact />} />
-        <Route path='iphone' element={<Iphone />} />
+        <Route path='filter' element={<Filter />} />
+        <Route path='shop/:name' element={<PageProducts />} />
     </Routes>
-        
+
 };
 
 export default Routers;
