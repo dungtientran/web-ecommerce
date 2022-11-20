@@ -6,7 +6,9 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import BuyFast from '../components/UI/BuyFast';
 import ProductList from '../components/UI/ProductList';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllCategories, getAllProducsts } from '../redux/slice/productsSlice';
+
 
 const Home = () => {
     const [hotProduct, sethottProduct] = useState([]);
@@ -14,9 +16,13 @@ const Home = () => {
     const [mouse, setMouse] = useState([]);
     const [laptop, setLaptop] = useState([]);
     const [keyBoard, setKeyBoard] = useState([]);
-    const listProduct = useSelector(state => state.allproducts?.allproducts);
+    const listProduct = useSelector(state => state.products?.allproducts);
     const a = 'điện thoại'
-    // console.log(listProduct);
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getAllProducsts())
+        dispatch(getAllCategories())
+    },[dispatch])
     useEffect( () => {
         const fillterIphone = listProduct.filter((item) => item.categoryId.categoryName.toLowerCase() === a).slice(0,8);
         const fillterMouse = listProduct.filter((item) => item.categoryId.categoryName.toLowerCase() === 'chuột');
@@ -30,6 +36,7 @@ const Home = () => {
         setKeyBoard(fillterIpad)
         localStorage.setItem('All_Producst',JSON.stringify(listProduct) )
     }, [listProduct]);
+    
     return (
         <>
             <div>

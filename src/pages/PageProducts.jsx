@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import UiFilter from '../components/filter/UiFilter';
+import NaviSuv from '../components/naviSuv/NaviSuv';
 
 const PageProducts = () => {
-    const listProducts = JSON.parse(localStorage.getItem('All_Producst'));
-    const productName = localStorage.getItem('PRODUCTS_NAME')
-    const brand = listProducts.map(item => item.brand);
-    const listBrand = [...new Set(brand)];
-
-        return (
-            <div className='pt-20 px-10'>
-                <p className='font-bold text-2xl'>{productName}</p>
-                <UiFilter listBrand={listBrand} productName ={productName} />
+    const productName = localStorage.getItem('PRODUCTS_NAME');
+    return (
+        <>
+            <div className='mt-3 mb-10'>
+                <NaviSuv nav={productName} />
             </div>
-        );
-    };
+            <div className='pt-20 px-10'>
 
-    export default PageProducts;
+                <p className='font-bold text-2xl'>{productName}</p>
+                <UiFilter productName={productName} />
+            </div>
+        </>
+    );
+};
+
+export default PageProducts;

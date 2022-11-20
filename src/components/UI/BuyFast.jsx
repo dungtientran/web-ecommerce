@@ -8,7 +8,7 @@ const BuyFast = () => {
     const isOpen = useSelector((state) => state.open?.openBuyFast);
     const id = useSelector((state) => state.open?.buyFast);
     const dispatch = useDispatch();
-    const listProduct = useSelector(state => state.allproducts?.allproducts);
+    const listProduct = useSelector(state => state.products?.allproducts);
     const products = listProduct.find((item) => item._id === id);
     const product = products?.listDtail?.map(item => item.listImg).reduce((a, b) => {
         return a.concat(b)

@@ -18,7 +18,8 @@ const SingleCartInfor = ({ products, id }) => {
     const listRam = products.listDtail.map(item => item.ram);
     const listRom = products.listDtail.map(item => item.rom);
     const [rams, roms] = [Array.from(new Set(listRam)), Array.from(new Set(listRom))];
-    console.log(products);
+    const token = localStorage.getItem('TOKEN');
+
     useEffect(() => {
 
         const buttonAddCart = document.querySelector('.buttonAddCart');
@@ -28,7 +29,6 @@ const SingleCartInfor = ({ products, id }) => {
                 setPrice(item.price)
                 setChange(true)
                 buttonAddCart.removeAttribute('disabled')
-                console.log('aloha', item._id);
                 setNewID(item._id);
                 setThumbnail(item.listImg[0]);
             }
@@ -47,8 +47,12 @@ const SingleCartInfor = ({ products, id }) => {
         price: price,
     }
     const hanldeAddCartItem = () => {
-        dispatch(openSideCart(!null));
-        dispatch(addCart(productBuy));
+        if (token) {
+            dispatch(openSideCart(!null));
+            dispatch(addCart(productBuy));
+        }else{
+            alert('Đăng nhập để mua hàng')
+        }
     }
     const handleChooseColor = ({ target: { value } }) => {
         setColor(value);
