@@ -1,13 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { buyFast, openBuyFast } from '../../redux/slice/openSlice';
+import { buyFast, openBuyFast } from '../../redux/slice/cartSlice';
 
 const ProductCart = ({ item }) => {
  
     const dispatch = useDispatch();
     const haldleClickBuyFast = () => {
-        // (e) => e.stopPropagation()
         dispatch(openBuyFast(!null))
         dispatch(buyFast(item._id))
     }
@@ -16,7 +15,7 @@ const ProductCart = ({ item }) => {
             <Link to={`/product/${item._id}`}  className='flex flex-col justify-between border-yellow-300 cardhover rounded-lg h-[560px]'>
                 <div className='p-14 border-black flex flex-col justify-between relative'>
                     <div className='overflow-hidden p-3'>
-                        <img src={`https://shope-b3.thaihm.site/${item.thumbnail}`} alt="" className='w-full' />
+                        <img src={`https://shope-b3.thaihm.site/${item.thumbnail}`} alt={item.productName} className='w-full' />
                     </div>
                     <div className='text-center my-2 space-y-1'>
                         <p className='font-semibold truncate'>{item.productName}</p>

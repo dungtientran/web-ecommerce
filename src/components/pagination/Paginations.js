@@ -6,7 +6,7 @@ const Paginations = ({totalPost, postPage, paginate}) => {
         pageNumber.push(i)
     }
     return (
-        <div className='flex justify-center my-10'>
+        <div className='flex justify-center py-10'>
             <div className='flex space-x-1'>
                 {pageNumber.map((number, index) => (
                     <div key={index} className=' py-1 px-2 border border-blue-500 cursor-pointer' onClick={() => paginate(number)}>

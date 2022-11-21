@@ -1,31 +1,26 @@
 import React from 'react';
 
-import { ExportOutlined } from '@ant-design/icons'
+import { ArrowRightOutlined, ExportOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom';
-import { openSideCart } from '../../redux/slice/openSlice';
+import { openSideCart } from '../../redux/slice/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const SideCart = () => {
-    const isOpen = useSelector((state) => state.open.openSideCart);
-    const listCartStore = useSelector((state) => state.open.cartItem);
-    localStorage.setItem('LIST_CART', JSON.stringify(listCartStore));
+    const isOpen = useSelector((state) => state.cart.openSideCart);
     const listCart = JSON.parse(localStorage.getItem('LIST_CART'));
-    const totalPrice = listCart?.map((item) => item.totalPrice).reduce((a, b) => {
-        return a + b
-    }, 0)
+    const totalPrice = JSON.parse(localStorage.getItem('TOLTAL_PRICE'))
+    const totalAmount = JSON.parse(localStorage.getItem('TOTAL_AMOUNT'))
     const dispatch = useDispatch();
-    const totalAmount = useSelector((state) => state.open.totalAmount);
 
     return (
         <>
             <div onClick={() => dispatch(openSideCart(null))} className={`w-full h-full bg-black-rgba fixed top-0 z-20 ${!isOpen ? 'hidden' : 'block'}`}></div>
             <div>
                 <div className={`w-[24%] h-full top-0 right-0 fixed z-40 py-14 px-4 bg-white ${!isOpen ? 'translate-x-full' : 'translate-x-0'} ease-in-out duration-1000`}>
-                    {/* header */}
                     <div className='flex justify-between '>
                         <div>
                             <p className='text-xl font-semibold'>Giỏ hàng</p>
-                            <p className='my-2'>Bạn đang có <span className='font-semibold text-red-500'> {totalAmount} </span> sản phẩm trong giỏ hàng</p>
+                            <p className='my-2'>Bạn đang có <span className='font-semibold text-red-500'> {totalAmount || 0} </span> sản phẩm trong giỏ hàng</p>
                         </div>
                         <Link className='text-xl mr-2' onClick={() => dispatch(openSideCart(null))}>
                             <ExportOutlined />
@@ -45,9 +40,9 @@ const SideCart = () => {
                                                 <p className='text-xs italic'><span>Màu: </span> <span className='font-semibold'>{item.color}</span></p>
                                                 <p className='text-xs italic'><span>Ram: </span> <span className='font-semibold'>{item.ram}</span></p>
                                                 <p className='text-xs italic'><span>Rom: </span> <span className='font-semibold'>{item.rom}</span></p>
-                                                <p className='text-xs italic'><span>Giá: </span> <span className='font-semibold'>{item.price.toLocaleString()}</span></p>
+                                                <p className='text-xs italic'><span>Giá: </span> <span className='font-semibold'>{item.price?.toLocaleString()}</span></p>
                                                 <p className='text-xs italic'><span>Số lượng: </span> <span className='font-semibold'>{item.amountBuy}</span></p>
-                                                
+
                                             </div>
                                             <div>
                                                 <button className='px-1 text-sm font-thin border bg-gray-50'>Xóa</button>
@@ -62,10 +57,15 @@ const SideCart = () => {
                     </div>
                     <div className=' border-t-2 border-black font-bold my-4 py-2'>
                         <p className='uppercase'>tổng tiền tạm tính</p>
-                        <p><span>{totalPrice.toLocaleString()}</span>đ</p>
+                        <p><span>{totalPrice?.toLocaleString()}</span>đ</p>
                     </div>
                     <button className='uppercase text-white bg-black p-2 w-full' >tiến hành đặt hàng</button>
-                    <p className='text-center mt-4 '>Xem chi tiết giỏ hàng</p>
+                    <Link to= 'cart' className='flex justify-center mt-4' onClick={() => dispatch(openSideCart(null))}>
+                        <div className='flex space-x-1'>
+                            <span> Xem chi tiết giỏ hàng</span>
+                            <span className='flex items-center'><ArrowRightOutlined /></span>
+                        </div>
+                    </Link>
                 </div>
 
             </div>

@@ -26,7 +26,8 @@ export const productsSlice = createSlice({
     extraReducers: builder => {
         builder
             .addCase(getAllProducsts.fulfilled, (state, action) => {
-                state.allproducts = action.payload
+                state.allproducts = action.payload;
+                localStorage.setItem('ALL_PRODUCTS', JSON.stringify(state.allproducts))
             })
             .addCase(getAllCategories.fulfilled, (state, action) => {
                 state.allCategories = action.payload

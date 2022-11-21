@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
 import UiFilter from '../components/filter/UiFilter';
 import NaviSuv from '../components/naviSuv/NaviSuv';
 
@@ -11,7 +10,6 @@ const PageProducts = () => {
                 <NaviSuv nav={productName} />
             </div>
             <div className='pt-20 px-10'>
-
                 <p className='font-bold text-2xl'>{productName}</p>
                 <UiFilter productName={productName} />
             </div>

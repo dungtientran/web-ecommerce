@@ -9,11 +9,9 @@ const initialState = {
 export const userLogin = createAsyncThunk('login', async (user) => {
     try {
         const response = await axios.post('/auth/sign-in', user);
-        console.log(response);
         return response.data.token;
-       
     } catch (error) {
-        alert('Sai tai khoan hoac mat khau');
+        alert('Sai tài khoản hoặc mật khẩu');
     }
 })
 
@@ -23,6 +21,7 @@ export const getUserInfor = createAsyncThunk('userinfo', async () => {
             Authorization: localStorage.getItem('TOKEN')
         }
     });
+    console.log(respose.data.user);
     return respose.data.user;
 })
 

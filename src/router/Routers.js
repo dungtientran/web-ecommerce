@@ -9,7 +9,8 @@ import ProductDetails from '../pages/ProductDetails';
 import Contact from '../pages/Contact';
 import Filter from '../components/filter/Filter';
 import PageProducts from '../pages/PageProducts';
-import CreateProduct from '../components/create Produc/CreateProduct';
+import UserInfor from '../pages/UserInfor';
+
 
 const Routers = () => {
     return <Routes>
@@ -23,7 +24,7 @@ const Routers = () => {
         <Route path='contact' element={<Contact />} />
         <Route path='filter' element={<Filter />} />
         <Route path='shop/:name' element={<PageProducts />} />
-        <Route path='create' element={<CreateProduct />} />
+        <Route path='Profile' element={<UserInfor />} />
     </Routes>
 
 };

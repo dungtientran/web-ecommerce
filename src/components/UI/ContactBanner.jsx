@@ -6,7 +6,6 @@ import contactbanner from '../../assets/image/ContactBanner.png'
 const ContactBanner = () => {
     return (
         <section>
-
             <div className='relative h-[400px] flex items-center '>
                 <img src={contactbanner} alt="contactbanner" className='w-full' />
                 <Link to='contact' className='w-[26%] text-center bg-black-rgba absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] py-4 text-white border-4 text-2xl hover:bg-black'>Xem danh sách cửa hàng </Link>

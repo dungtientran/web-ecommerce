@@ -1,19 +1,22 @@
-import React, { useEffect } from 'react';
+
+import { unwrapResult } from '@reduxjs/toolkit';
 import { Button, Form, Input, Typography } from 'antd';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { getUserInfor, userLogin } from '../redux/slice/authSlice';
 
-
 const Login = () => {
-    const dispatch = useDispatch();
     const navigate = useNavigate();
-   
-    const onFinish = (values) => {
-        dispatch(userLogin(values))
+    const dispatch = useDispatch();   
+    const onFinish = async (values) => {
+        const resultToken = await dispatch(userLogin(values))
+        const tokenResult = unwrapResult(resultToken)
+        if(tokenResult) {
+            navigate('/')
+        }
         dispatch(getUserInfor())
     };
- 
+
     return (
         <>
             <Form

@@ -8,7 +8,7 @@ const Filter = () => {
 
     const searchText = useSelector(state => state.searchtext.searchText )
     const listProducts = JSON.parse(localStorage.getItem('All_Producst'));
-    const brand = listProducts.map(item => item.brand);
+    const brand = listProducts?.map(item => item.brand);
     const listBrand = [...new Set(brand)];
 
     return (

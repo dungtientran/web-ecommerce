@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import TopHeader from './TopHeader';
 import logo from '../../assets/image/logo.png'
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { SearchOutlined } from '@ant-design/icons';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { transferNavBar } from '../../redux/slice/navBarSlide';
 import { getSearchText } from '../../redux/slice/searchSlice';
 
@@ -12,7 +12,7 @@ const Header = () => {
     const categoreis = JSON.parse(localStorage.getItem('ALL_CATEGORIES_NAME'))?.map(item => item.categoryName)
     const [fix, setFix] = useState(false);
     const [searchText, setSearchText] = useState('')
-    function setFixed() {
+    const setFixed = () => {
         if (window.scrollY > 1) {
             setFix(true)
         } else {
@@ -25,12 +25,10 @@ const Header = () => {
     const location = () => {
         location.reload()
     }
-  
-   
     const hadleNavClick = (e) => {  
-        const disPlay = e.target.innerText
-        dispatch(transferNavBar(disPlay))
-        location()
+        const disPlay = e.target.innerText;
+        dispatch(transferNavBar(disPlay));
+        location();
     }
     const handleSearch = (e) => {
         e.preventDefault();
@@ -39,8 +37,7 @@ const Header = () => {
         setSearchText('')
     }
     return (
-
-        <div className={fix ? 'fixed w-full shadow-lg animate-wiggle z-10' : ''}>
+        <div className={fix ? 'fixed w-full top-0 shadow-lg animate-wiggle z-10' : ''}>
             <TopHeader />
             <section>
                 <div className='flex justify-between items-center py-5 px-12 bg-white '>
@@ -49,7 +46,7 @@ const Header = () => {
                     </Link>
                     <div className='space-x-5 uppercase font-semibold'>
                         {categoreis?.map((item, index) => (
-                            <NavLink key={index} to={`shop/${item}`} onClick={hadleNavClick} className={(navClass) => navClass.isActive ? 'py-6 border-b-2 border-black text-lg' : ''}>
+                            <NavLink key={index} to={`shop/${item}`} className='py-6 text-lg nav hover:border-b-2 border-black' onClick={hadleNavClick}>
                                 {item}
                             </NavLink>
                         ))}

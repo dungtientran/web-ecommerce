@@ -1,17 +1,18 @@
 import React from 'react';
 import { PhoneOutlined, UserOutlined, ShoppingCartOutlined } from '@ant-design/icons'
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux'
-import { openSideCart } from '../../redux/slice/openSlice';
+import { useDispatch } from 'react-redux'
+import { openSideCart } from '../../redux/slice/cartSlice';
 import { Col, Row } from 'antd';
+
 const TopHeader = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const totalAmount = useSelector((state) => state.open.totalAmount);
     const userInfor = JSON.parse(localStorage.getItem('USER'));
+    const totalAmount = JSON.parse(localStorage.getItem('TOTAL_AMOUNT'));
     const handleLogout = () => {
-        localStorage.clear()
-        navigate('home')
+        localStorage.clear();
+        navigate('/');
     }
     return (
         <Row className='bg-gray-200 flex justify-between py-1 px-14'>
@@ -22,7 +23,7 @@ const TopHeader = () => {
             <Col className='flex space-x-10'>
                 {userInfor ? (
                     <>
-                        <Link className='flex items-center space-x-1'>
+                        <Link to='profile' className='flex items-center space-x-1'>
                             <UserOutlined />
                             <p>{userInfor?.username}</p>
                         </Link>

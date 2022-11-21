@@ -23,7 +23,6 @@
         name: 'Ipad',
         imgUrl: 'https://i.ibb.co/NKsyd8R/ipad-icon.jpg'
     },
-    
 ]
 
 export default icons

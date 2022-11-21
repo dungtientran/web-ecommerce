@@ -5,7 +5,7 @@ const ImgSlider = ({ imgs }) => {
     const fisrtUrl = imgs[0]
     const [url, setUrl] = useState(fisrtUrl);
     return (
-        <section className='  max-w-[700px]'>
+        <section className='w-[700px]'>
             <div className='w-full flex p-2'>
                 <div  className='w-[10%] p-1 border h-full'>
                     {imgs?.map((img, index) => (

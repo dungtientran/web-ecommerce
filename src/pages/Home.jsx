@@ -9,7 +9,6 @@ import ProductList from '../components/UI/ProductList';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategories, getAllProducsts } from '../redux/slice/productsSlice';
 
-
 const Home = () => {
     const [hotProduct, sethottProduct] = useState([]);
     const [iphone, setIphone] = useState([]);
@@ -17,14 +16,13 @@ const Home = () => {
     const [laptop, setLaptop] = useState([]);
     const [keyBoard, setKeyBoard] = useState([]);
     const listProduct = useSelector(state => state.products?.allproducts);
-    const a = 'điện thoại'
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getAllProducsts())
         dispatch(getAllCategories())
     },[dispatch])
     useEffect( () => {
-        const fillterIphone = listProduct.filter((item) => item.categoryId.categoryName.toLowerCase() === a).slice(0,8);
+        const fillterIphone = listProduct.filter((item) => item.categoryId.categoryName.toLowerCase() === 'điện thoại').slice(0,8);
         const fillterMouse = listProduct.filter((item) => item.categoryId.categoryName.toLowerCase() === 'chuột');
         const fillterLaptop = listProduct.filter((item) => item.categoryId.categoryName.toLowerCase() === 'laptop');
         const fillterIpad = listProduct.filter((item) => item.categoryId.categoryName.toLowerCase() === 'keyboard');
@@ -33,10 +31,9 @@ const Home = () => {
         setIphone(fillterIphone);
         setMouse(fillterMouse);
         setLaptop(fillterLaptop);
-        setKeyBoard(fillterIpad)
-        localStorage.setItem('All_Producst',JSON.stringify(listProduct) )
+        setKeyBoard(fillterIpad);
     }, [listProduct]);
-    
+
     return (
         <>
             <div>

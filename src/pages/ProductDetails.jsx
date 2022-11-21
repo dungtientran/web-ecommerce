@@ -1,14 +1,15 @@
 import { FacebookOutlined } from '@ant-design/icons';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import NaviSuv from '../components/naviSuv/NaviSuv';
 import AddressShop from '../components/UI/Deltails/AddressShop';
 import ImgSlider from '../components/UI/Deltails/ImgSlider';
 import Service from '../components/UI/Deltails/Service';
 import SingleCartInfor from '../components/UI/Deltails/SingleCartInfor';
+
 const ProductDetails = () => {
     const { id } = useParams();
-    const listProduct = JSON.parse(localStorage.getItem('All_Producst'));
+    const listProduct = JSON.parse(localStorage.getItem('ALL_PRODUCTS'));
     const products = listProduct.find((item) => item._id === id);
     const product = products?.listDtail?.map(item => item.listImg).reduce((a, b) => {
         return a.concat(b)
@@ -20,6 +21,9 @@ const ProductDetails = () => {
         }
         return item.thumbnail
     })
+    useEffect(()=>{
+        window.scroll(0, 0)
+    },[])
     return (
         <div className=''>
             <NaviSuv nav={products.categoryId.categoryName} smallNav={products.productName} />

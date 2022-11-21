@@ -7,17 +7,17 @@ import Paginations from '../pagination/Paginations';
 
 const UiFilter = ({ productName }) => {
     const searchText = useSelector(state => state.searchtext.searchText )
-    const listProducts = JSON.parse(localStorage.getItem('All_Producst'));
+    const listProducts = JSON.parse(localStorage.getItem('ALL_PRODUCTS'));
     const brand = listProducts.map(item => item.brand);
     const listBrand = [...new Set(brand)];
     const [listProductUi, setListProductUi] = useState(listProducts);
     const [selectedCategories, setSelectedCategories] = useState(productName);
     const [selectedBrand, setSelectedBrand] = useState(null);
     const [currentPage, setCurrenPage] = useState(1);
-    const postPage= useState(8);
-    const categoreis = useSelector(state => state.products.allCategories);
+    const [postPage, setPostPage]= useState(8);
+    const categoreis = JSON.parse(localStorage.getItem('ALL_CATEGORIES_NAME'))
     const categoreisName = categoreis.map(item => item.categoryName);
-    console.log(productName);
+
     const filter = () => {
         let updateListProduct = listProducts;
         if (selectedCategories) {
@@ -39,7 +39,7 @@ const UiFilter = ({ productName }) => {
     const firstPost = lastPost - postPage;
     const currentPost = listProductUi.slice(firstPost, lastPost);
     const paginate = (pageNumber) => setCurrenPage(pageNumber);
-
+    console.log(currentPost);
     return (
         <>
             <div className='flex justify-between pt-20'>
@@ -58,7 +58,7 @@ const UiFilter = ({ productName }) => {
                 </div>
             </div>
             <div className='pt-12'>
-                {listProductUi.length > 0 ? (
+            {listProductUi.length > 0 ? (
                     <>
                         <ProductList products={currentPost} />
                         <Paginations postPage={postPage} totalPost={listProductUi.length} paginate={paginate} />
