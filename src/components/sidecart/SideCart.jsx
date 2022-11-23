@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ArrowRightOutlined, ExportOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom';
-import { loginCart, openSideCart } from '../../redux/slice/cartSlice';
+import { openSideCart } from '../../redux/slice/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const SideCart = () => {

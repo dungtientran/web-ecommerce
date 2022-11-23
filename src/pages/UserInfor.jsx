@@ -1,7 +1,7 @@
 import { Divider } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { changeAvatar, changePassword, changeUserInfor } from '../apis';
 import NaviSuv from '../components/naviSuv/NaviSuv';
 import { getUserInfor } from '../redux/slice/authSlice';

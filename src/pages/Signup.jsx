@@ -5,7 +5,7 @@ import axios from '../axios'
 const Signup = () => {
     const navigate = useNavigate()
     const onFinish = async (e) => {
-        const response = axios.post('auth/sign-up', e)
+        axios.post('auth/sign-up', e)
         try {
             alert('Đăng ký thành công')
             navigate('/login')
@@ -13,8 +13,6 @@ const Signup = () => {
             alert('Đăng ký thất bại')
         }
     }
-
-
     return (
         <>
             <Form

@@ -1,5 +1,3 @@
-import { Alert } from "antd";
-import { Navigate } from "react-router-dom";
 
 export const changeAvatar = (avatar) => new Promise(async (res, rej) => {
     var myHeaders = new Headers();

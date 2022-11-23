@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { PhoneOutlined, UserOutlined, ShoppingCartOutlined } from '@ant-design/icons'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { loginCart, openSideCart } from '../../redux/slice/cartSlice';
 import { Col, Row } from 'antd';
 
 const TopHeader = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const userInfor = JSON.parse(localStorage.getItem('USER'));
     const token = localStorage.getItem('TOKEN')
     useEffect(() => {
