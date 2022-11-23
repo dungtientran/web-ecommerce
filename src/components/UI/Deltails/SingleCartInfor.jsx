@@ -2,10 +2,10 @@
 import { Radio } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCart, openSideCart } from '../../../redux/slice/cartSlice';
+import { loginCart, openSideCart } from '../../../redux/slice/cartSlice';
+import * as apis from '../../../apis'
 
 const SingleCartInfor = ({ products, id }) => {
-
     const [newID, setNewID] = useState(id);
     const [thumbnail, setThumbnail] = useState();
     const [change, setChange] = useState(false);
@@ -21,7 +21,6 @@ const SingleCartInfor = ({ products, id }) => {
     const [rams, roms] = [Array.from(new Set(listRam)), Array.from(new Set(listRom))];
     const token = localStorage.getItem('TOKEN');
     const dispatch = useDispatch();
-    
     useEffect(() => {
         const buttonAddCart = document.querySelector('.buttonAddCart');
         const notificationChoose = document.querySelector('.notificationChoose');
@@ -42,16 +41,6 @@ const SingleCartInfor = ({ products, id }) => {
         }
     }, [color, ram, rom]);
 
-    const productBuy = {
-        id: newID,
-        name: products?.productName,
-        thumbnail: thumbnail,
-        color: color,
-        rom: rom,
-        ram: ram,
-        amountBuy: amount,
-        price: price,
-    }
     const handleChooseColor = ({ target: { value } }) => {
         setColor(value);
     }
@@ -66,19 +55,24 @@ const SingleCartInfor = ({ products, id }) => {
     }
     const prevAmount = () => {
         setAmount(amount - 1)
-        if(amount === 1) {
+        if (amount === 1) {
             setAmount(1)
         }
+    }
+    const addCartItem = {
+        productDetailId: newID,
+        quantity: amount
     }
     const hanldeAddCartItem = () => {
         if (token) {
             dispatch(openSideCart(!null));
-            dispatch(addCart(productBuy));
-            setAmount(1)
+            apis.addToCart(addCartItem);
+            dispatch(loginCart())
         } else {
             alert('Đăng nhập để mua hàng')
         }
     }
+
     return (
         <>
             <div className='space-y-4'>
@@ -86,9 +80,9 @@ const SingleCartInfor = ({ products, id }) => {
                 <p><span className='font-semibold'>Mã sản phẩm: </span> <span className='italic font-thin'>{newID}</span></p>
                 <div className='p-8 text-4xl bg-gray-200 text-center text-red-600'><span className='notificationPrice'>
                     {change ?
-                        <span>{price?.toLocaleString()} đ</span> 
+                        <span>{price?.toLocaleString()} đ</span>
                         :
-                        <span>{products.price?.toLocaleString() || 'Chưa có giá'}</span>}  
+                        <span>{products.price?.toLocaleString() || 'Chưa có giá'}</span>}
                 </span>
                 </div>
                 <div className='flex space-x-3 items-center'>

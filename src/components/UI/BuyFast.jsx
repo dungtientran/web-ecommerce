@@ -24,7 +24,7 @@ const BuyFast = () => {
     return (
         <>
             {isOpen ? (
-                <div className=' flex items-center justify-center bg-black-rgba fixed top-0 right-0 w-full h-full z-10' onClick={() => dispatch(openBuyFast(null))}>
+                <div className=' flex items-center justify-center bg-black-rgba fixed top-0 right-0 w-full h-full z-30' onClick={() => dispatch(openBuyFast(null))}>
                     <div onClick={(e) => e.stopPropagation()} className='w-[50%] h-[70%] bg-white z-10'>
                         <div className='flex justify-between p-6 m-auto'>
                             <div >

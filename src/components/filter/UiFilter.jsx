@@ -34,12 +34,10 @@ const UiFilter = ({ productName }) => {
     useEffect(() => {
         filter()
     }, [selectedBrand, selectedCategories,searchText]);
-
     const lastPost = currentPage * postPage;
     const firstPost = lastPost - postPage;
     const currentPost = listProductUi.slice(firstPost, lastPost);
     const paginate = (pageNumber) => setCurrenPage(pageNumber);
-    console.log(currentPost);
     return (
         <>
             <div className='flex justify-between pt-20'>

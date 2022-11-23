@@ -10,12 +10,12 @@ import SingleCartInfor from '../components/UI/Deltails/SingleCartInfor';
 const ProductDetails = () => {
     const { id } = useParams();
     const listProduct = JSON.parse(localStorage.getItem('ALL_PRODUCTS'));
-    const products = listProduct.find((item) => item._id === id);
+    const products = listProduct?.find((item) => item._id === id);
     const product = products?.listDtail?.map(item => item.listImg).reduce((a, b) => {
         return a.concat(b)
     }, []);
     const thumbnail = []
-    listProduct.map((item) => {
+    listProduct?.map((item) => {
         if (item._id === id) {
             thumbnail.push(item.thumbnail)
         }
@@ -26,7 +26,7 @@ const ProductDetails = () => {
     },[])
     return (
         <div className=''>
-            <NaviSuv nav={products.categoryId.categoryName} smallNav={products.productName} />
+            <NaviSuv nav={products?.categoryId.categoryName} smallNav={products?.productName} />
             <div className='flex justify-between pt-[20px] w-[60%] m-auto h-screen'>
                 <ImgSlider imgs={product} />
                 <div className='w-[60%] space-y-4'>

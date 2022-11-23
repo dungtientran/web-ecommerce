@@ -16,17 +16,17 @@ const Home = () => {
     const [laptop, setLaptop] = useState([]);
     const [keyBoard, setKeyBoard] = useState([]);
     const listProduct = useSelector(state => state.products?.allproducts);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getAllProducsts())
         dispatch(getAllCategories())
-    },[dispatch])
-    useEffect( () => {
-        const fillterIphone = listProduct.filter((item) => item.categoryId.categoryName.toLowerCase() === 'điện thoại').slice(0,8);
+    }, [dispatch])
+    useEffect(() => {
+        const fillterIphone = listProduct.filter((item) => item.categoryId.categoryName.toLowerCase() === 'điện thoại').slice(0, 8);
         const fillterMouse = listProduct.filter((item) => item.categoryId.categoryName.toLowerCase() === 'chuột');
         const fillterLaptop = listProduct.filter((item) => item.categoryId.categoryName.toLowerCase() === 'laptop');
         const fillterIpad = listProduct.filter((item) => item.categoryId.categoryName.toLowerCase() === 'keyboard');
-        const hotProducts = listProduct.slice(0,8);
+        const hotProducts = listProduct.slice(0, 8);
         sethottProduct(hotProducts);
         setIphone(fillterIphone);
         setMouse(fillterMouse);
@@ -42,7 +42,7 @@ const Home = () => {
             <SubNav />
             <section className='p-10'>
                 <h1 className='text-3xl font-semibold mt-24 mb-6'>SẢN PHẨM HOT</h1>
-                <ProductList products={hotProduct}/>
+                <ProductList products={hotProduct} />
             </section>
             <section className='p-10'>
                 <h1 className='text-3xl font-semibold mt-24 mb-6'>KEYBOARD</h1>

@@ -3,7 +3,7 @@ import axios from '../../axios';
 
 const initialState = {
     token: '',
-    userInfor: null
+    userInfor: []
 }
 
 export const userLogin = createAsyncThunk('login', async (user) => {
@@ -18,10 +18,9 @@ export const userLogin = createAsyncThunk('login', async (user) => {
 export const getUserInfor = createAsyncThunk('userinfo', async () => {
     const respose = await axios.get('/auth/get-loged-in-user', {
         headers: {
-            Authorization: localStorage.getItem('TOKEN')
+            Authorization: JSON.parse(localStorage.getItem('TOKEN'))
         }
     });
-    console.log(respose.data.user);
     return respose.data.user;
 })
 
@@ -34,7 +33,7 @@ const authSlice = createSlice({
         builder
             .addCase(userLogin.fulfilled, (state, action) => {
                 state.token = action.payload
-                localStorage.setItem('TOKEN', state.token)
+                localStorage.setItem('TOKEN', JSON.stringify(state.token))
             })
             .addCase(getUserInfor.fulfilled, (state, action) => {
                 state.userInfor = action.payload

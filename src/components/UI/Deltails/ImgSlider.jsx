@@ -9,7 +9,7 @@ const ImgSlider = ({ imgs }) => {
             <div className='w-full flex p-2'>
                 <div  className='w-[10%] p-1 border h-full'>
                     {imgs?.map((img, index) => (
-                        <div key={index} className='border' onClick={() => setUrl(img)}>
+                        <div key={index} className='border imgActive' onMouseOver={() => setUrl(img)}>
                             <img  src={`https://shope-b3.thaihm.site/${img}`} alt="img" className='w-full' />
                         </div>
                     ))}

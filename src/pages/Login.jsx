@@ -4,19 +4,22 @@ import { Button, Form, Input, Typography } from 'antd';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getUserInfor, userLogin } from '../redux/slice/authSlice';
+import { loginCart } from '../redux/slice/cartSlice';
 
 const Login = () => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();   
+    const dispatch = useDispatch(); 
     const onFinish = async (values) => {
         const resultToken = await dispatch(userLogin(values))
         const tokenResult = unwrapResult(resultToken)
         if(tokenResult) {
-            navigate('/')
+            navigate('/');
+            alert('gg');
+            dispatch(getUserInfor())
+            dispatch(loginCart())
         }
-        dispatch(getUserInfor())
     };
-
+    
     return (
         <>
             <Form
@@ -40,7 +43,6 @@ const Login = () => {
                 >
                     <Input />
                 </Form.Item>
-
                 <Form.Item
                     label="Password"
                     name="password"

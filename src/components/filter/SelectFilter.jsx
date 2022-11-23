@@ -4,9 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectFilterBrand, selectFilterName } from '../../redux/slice/filterselectionSlice';
 
 const SelectFilter = ({listBrand}) => {
-    const listProducts = JSON.parse(localStorage.getItem('All_Producst'));
-    const [listSearchText, setListSearchText] = useState(listProducts);
-
     const categoreis = useSelector(state => state.allcategoreis.allCategories);
     const categoreisName = categoreis.map(item => item.categoryName);
     const dispatch = useDispatch()
