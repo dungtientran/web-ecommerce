@@ -7,7 +7,6 @@ import * as apis from '../../../apis'
 
 const SingleCartInfor = ({ products, id }) => {
     const [newID, setNewID] = useState(id);
-    const [thumbnail, setThumbnail] = useState();
     const [change, setChange] = useState(false);
     const [color, setColor] = useState();
     const [rom, setRom] = useState();
@@ -21,34 +20,34 @@ const SingleCartInfor = ({ products, id }) => {
     const [rams, roms] = [Array.from(new Set(listRam)), Array.from(new Set(listRom))];
     const token = localStorage.getItem('TOKEN');
     const dispatch = useDispatch();
+    
     useEffect(() => {
         const buttonAddCart = document.querySelector('.buttonAddCart');
         const notificationChoose = document.querySelector('.notificationChoose');
         buttonAddCart.setAttribute('disabled', '');
-        const result = products.listDtail.filter(item => {
+        products.listDtail.filter(item => {
             if (item.color === color && item.ram === ram && item.rom === rom) {
-                setChange(true);
                 buttonAddCart.removeAttribute('disabled');
                 notificationChoose.style.display = 'none';
                 setNewID(item._id);
-                setThumbnail(item.listImg[0]);
-                return setPrice(item.price)
+                setPrice(item.price)
             }
             return item
         })
-        if (result.length === 4) {
-            setPrice('Het Hang')
-        }
     }, [color, ram, rom]);
+  
 
     const handleChooseColor = ({ target: { value } }) => {
         setColor(value);
+        setPrice('Hết Hàng')
     }
     const handleChooseRam = ({ target: { value } }) => {
         setRam(value);
+        setPrice('Hết Hàng')
     }
     const handleChooseRom = ({ target: { value } }) => {
         setRom(value);
+        setPrice('Hết Hàng')
     }
     const nextAmount = () => {
         setAmount(amount + 1)
@@ -78,11 +77,11 @@ const SingleCartInfor = ({ products, id }) => {
             <div className='space-y-4'>
                 <p className='text-2xl'>{products?.productName}</p>
                 <p><span className='font-semibold'>Mã sản phẩm: </span> <span className='italic font-thin'>{newID}</span></p>
-                <div className='p-8 text-4xl bg-gray-200 text-center text-red-600'><span className='notificationPrice'>
-                    {change ?
-                        <span>{price?.toLocaleString()} đ</span>
+                <div className='xl:p-8 lg:p-4 md:p-2 xl:text-4xl lg:text-2xl md:text-lg bg-gray-200 text-center text-red-600'><span className='notificationPrice'>
+                    {!change ?
+                        <span>{price?.toLocaleString() || 'Hiện chưa có giá'}</span>
                         :
-                        <span>{products.price?.toLocaleString() || 'Chưa có giá'}</span>}
+                        <span>Chọn thông số để xem giá</span>}
                 </span>
                 </div>
                 <div className='flex space-x-3 items-center'>
@@ -126,11 +125,11 @@ const SingleCartInfor = ({ products, id }) => {
                 <div className='relative hoverButonAddCart'>
                     {!isOpen ? (
                         <div className='flex w-full justify-between items-center text-white'>
-                            <button className='buttonAddCart w-full border bg-black p-2 text-lg hoverButonAddCart' onClick={hanldeAddCartItem}>Thêm vào giỏ hàng</button>
-                            <button className='w-full border bg-black p-2 text-lg'>Mua ngay</button>
+                            <button className='buttonAddCart w-full border bg-black p-2 text-lg hoverButonAddCart sm:text-xs md:text-base' onClick={hanldeAddCartItem}>Thêm vào giỏ hàng</button>
+                            <button className='w-full border bg-black p-2 text-lg sm:text-xs md:text-base'>Mua ngay</button>
                         </div>
                     ) : (
-                        <button className=' buttonAddCart p-4 bg-black text-white w-[50%]' onClick={hanldeAddCartItem} >Mua nhanh</button>
+                        <button className=' buttonAddCart p-4 bg-black text-white w-[50%] sm:text-xs md:text-base ' onClick={hanldeAddCartItem} >Mua nhanh</button>
                     )}
                     <div className='w-[30%] text-xs bg-black text-white text-center absolute -bottom-[-100%] left-[30%] font-thin hidden py-2 rounded-lg notificationChoose '>
                         Chọn màu sắc và thông số !

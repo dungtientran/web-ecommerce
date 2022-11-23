@@ -27,9 +27,9 @@ const ProductDetails = () => {
     return (
         <div className=''>
             <NaviSuv nav={products?.categoryId.categoryName} smallNav={products?.productName} />
-            <div className='flex justify-between pt-[20px] w-[60%] m-auto h-screen'>
+            <div className=' lg:flex justify-between pt-[20px] w-[50%] m-auto h-screen'>
                 <ImgSlider imgs={product} />
-                <div className='w-[60%] space-y-4'>
+                <div className='w-[50%] space-y-4 sm:pt-6'>
                     <SingleCartInfor products={products} thumbnail={thumbnail[0]} id={id} />
                     <div className='p-4 flex justify-center space-x-4 items-center '>
                         <span>Chia sẻ </span> <span className='Btn'><FacebookOutlined /></span>

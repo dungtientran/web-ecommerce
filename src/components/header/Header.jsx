@@ -43,15 +43,15 @@ const Header = () => {
                     <Link to='/' className='w-[15%]'>
                         <img src={logo} alt='logo' className='h-12' />
                     </Link>
-                    <div className='space-x-5 uppercase font-semibold'>
+                    <div className='xl:space-x-5 md:space-x-4 sm:hidden md:block uppercase font-semibold'>
                         {categoreis?.map((item, index) => (
-                            <NavLink key={index} to={`shop/${item}`} className='py-6 text-lg nav hover:border-b-2 border-black' onClick={hadleNavClick}>
+                            <NavLink key={index} to={`shop/${item}`} className='py-6 lg:text-base xl:text-lg md:text-xs  nav hover:border-b-2 border-black' onClick={hadleNavClick}>
                                 {item}
                             </NavLink>
                         ))}
                     </div>
                     <form className='w-[15%] flex items-center relative' onSubmit={handleSearch}>
-                        <input type="text" value={searchText} onChange={(e)=>setSearchText(e.target.value)} placeholder='Tìm theo tên...' className='border outline-none rounded-full w-full h-10 p-3' />
+                        <input type="text" value={searchText} onChange={(e)=>setSearchText(e.target.value)} placeholder='Tìm theo tên...' className='border outline-none rounded-full w-full h-10 p-3 md:hidden lg:block' />
                         <button className='absolute right-4 top-[50%] translate-y-[-50%] flex items-center'><SearchOutlined /></button>
                     </form>
                 </div>

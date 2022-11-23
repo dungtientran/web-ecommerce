@@ -42,26 +42,23 @@ const TopHeader = () => {
             <Col className='flex space-x-10'>
                 {token ? (
                     <div className='flex space-x-4'>
-                        <Link to='profile' className='flex items-center space-x-1'>
+                        <Link to='profile' className='flex items-center space-x-1 lg:text-base md:text-sm sm:text-xs ' >
                             <UserOutlined />
                             <p>{userInfor?.username}</p>
                         </Link>
-                        <Link >
-                            <p>My Order</p>
-                        </Link>
-                        <Link> 
-                            <button onClick={handleLogout}>Logout</button>
+                        <Link to='/login' onClick={handleLogout}> 
+                           Logout
                         </Link>
                     </div>
                 ) : (
                     <>
-                        <Link to='login' className='flex items-center space-x-1' >
+                        <Link to='login' className='flex items-center space-x-1  lg:text-base md:text-sm sm:text-xs' >
                             <UserOutlined />
                             <p>Tài khoản</p>
                         </Link>
                     </>
                 )}
-                <Link className='flex items-center space-x-1' onClick={hadleOpenCart}>
+                <Link className='flex items-center space-x-1 lg:text-base md:text-sm sm:text-xs' onClick={hadleOpenCart}>
                     <ShoppingCartOutlined />
                     <p>Giỏ hàng <span className='text-red-600'>( {totalQuantity} )</span></p>
                 </Link>

@@ -21,14 +21,13 @@ const Cart = () => {
 
     const loginCar = useSelector(state => state.cart.listCart);
     const listCartProduct = new Array(...loginCar);
-    if(!listCartProduct[0]?.productDetailId){
-
+    if (!listCartProduct[0]?.productDetailId) {
         listCartProduct.splice(0, 1);
     }
     const totalQuantity = listCartProduct?.map(item => item.quantity)?.reduce((total, item) => total + Number(item), 0);
     const totalPrice = listCartProduct?.map(item => Number(item.quantity) * Number(item.productDetailId.price)).reduce((total, item) => total + item, 0);
 
-    const handleUpdateCart =  () => {
+    const handleUpdateCart = () => {
         updateQuantityToCart({
             productDetailId: productId,
             quantity: quantity
@@ -42,7 +41,7 @@ const Cart = () => {
     const delEl = document.querySelectorAll('.deleteCart')
     const checkDelEl = document.querySelectorAll('.checkDelete')
     const cancelDel = document.querySelectorAll('.cancelDel')
-    
+
     delEl?.forEach((item, index) => {
         item.addEventListener('click', () => {
             checkDelEl[index].style.display = 'flex';
@@ -80,8 +79,8 @@ const Cart = () => {
                                 <div className='w-[20%] py-1'>
                                     <img src={`https://shope-b3.thaihm.site/${item.productDetailId.listImg[0]}`} alt="Lỗi ảnh" className='w-full' />
                                 </div>
-                                <div className='w-[95%] space-y-2 flex justify-between items-center'>
-                                    <div className='w-[70%] flex justify-between'>
+                                <div className='w-[80%] space-y-2 flex justify-between items-center'>
+                                    <div className='w-1/2 flex justify-between'>
                                         <div className='w-full'>
                                             <p className='font-thin pb-1 truncate w-[80%]'>{item.productDetailId.productId.productName}</p>
                                             <p className='text-xs italic font-bold'><span>Màu: </span> <span className='font-semibold ml-1'>{item.productDetailId.color}</span></p>
@@ -90,36 +89,36 @@ const Cart = () => {
                                             <p className='text-xs italic font-bold'><span>Đơn giá: </span> <span className='font-semibold ml-1'>{item.productDetailId.price?.toLocaleString()} đ</span></p>
                                             <p className='text-xs italic font-bold'><span>Số lượng: </span> <span className='font-semibold ml-1'>{item.quantity} cái</span></p>
                                         </div>
+                                    </div>
+                                    <div>
                                         <div className='flex items-center'>
                                             <div className='flex flex-col justify-center space-y-2'>
-                                                <p>Chọn lại số lượng</p>
+                                                <p className='sm:text-xs lg:text-sm xl:text-base'>Chọn lại số lượng</p>
                                                 <div className='space-x-2 flex'>
                                                     <div className='flex'>
-                                                        <div >
-                                                            <input
-                                                                type="text"
-                                                                className='bg-gray-200 outline-none shadow-inner text-center w-[50%] py-1'
-                                                                defaultValue={0}
-                                                                onChange={(e) => (setQuantity(e.target.value), setProductId(item.productDetailId._id))} />
-                                                        </div>
-                                                        <button className='py-1 px-2 text-center bg-black text-white sendButton' onClick={handleUpdateCart}>Gửi</button>
+                                                        <input
+                                                            type="text"
+                                                            className='bg-gray-200 outline-none shadow-inner text-center w-[50%] py-1'
+                                                            defaultValue={0}
+                                                            onChange={(e) => (setQuantity(e.target.value), setProductId(item.productDetailId._id))} />
+                                                        <button className='py-1 px-2 text-center bg-black text-white sendButton hover:bg-gray-400 hover:text-black rounded-lg' onClick={handleUpdateCart}>Gửi</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className='w-[5%]'>
+                                    <div>
                                         <div>
                                             <button
-                                                className='px-1 text-sm font-thin border bg-gray-50 deleteCart'
+                                                className='px-2 text-sm font-thin border bg-gray-50 deleteCart hover:bg-black hover:text-white'
                                                 onClick={() => {
-                                                    setDelProductId(item.productDetailId._id)                                               
+                                                    setDelProductId(item.productDetailId._id)
                                                 }}
 
                                             >Xóa</button>
                                             <div className='checkDelete space-x-2 hidden'>
-                                                 <button className='w-4 h-4 bg-black text-white flex items-center justify-center rounded-full p-2' onClick={handleRemoveCart}><CheckOutlined /></button>
-                                                 <button className='w-4 h-4 bg-black text-white flex items-center justify-center rounded-full p-2 cancelDel'><LoginOutlined /></button>
+                                                <button className='w-4 h-4 bg-black text-white flex items-center justify-center rounded-full p-2 hover:bg-gray-400' onClick={handleRemoveCart}><CheckOutlined /></button>
+                                                <button className='w-4 h-4 bg-black text-white flex items-center justify-center rounded-full p-2 hover:bg-gray-400 cancelDel'><LoginOutlined /></button>
                                             </div>
                                         </div>
                                     </div>
@@ -128,7 +127,7 @@ const Cart = () => {
                         ))}
                     </div>
                 </div>
-                <div className='space-y-6'>
+                <div className='space-y-6 sm:hidden lg:block'>
                     <div className='bg-gray-200 p-4 space-y-6'>
                         <p className='uppercase font-bold text-lg'>Tóm tắt đơn hàng</p>
                         <p className='font-thin'>Chưa bao gồm phí vận chuyển</p>

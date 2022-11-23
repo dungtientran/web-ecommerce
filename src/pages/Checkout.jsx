@@ -6,8 +6,6 @@ const Checkout = () => {
     const [name, setName] = useState();
     const [address, setAdress] = useState();
 
-    
-
     const handeleSubmit = (e) => {
         e.preventDefault()
         console.log(name,address);

@@ -12,8 +12,17 @@ const ProductCart = ({ item }) => {
     }
     return (
         <div className='relative cardhover'>
-            <Link to={`/product/${item._id}`}  className='flex flex-col justify-between border-yellow-300 cardhover rounded-lg h-[560px]'>
-                <div className='p-14 border-black flex flex-col justify-between relative'>
+            <Link to={`/product/${item._id}`}  
+            className=' flex flex-col justify-between border-yellow-300 cardhover rounded-lg
+            mg:h-[200px]
+            lg:h-[300px]
+            xl:h-[400px]
+            2xl:h-[540px]
+            '>
+                <div className=' border-black flex flex-col justify-between relative
+                lg:p-6
+                xl:p-14
+                '>
                     <div className='overflow-hidden p-3'>
                         <img src={`https://shope-b3.thaihm.site/${item.thumbnail}`} alt={item.productName} className='w-full' />
                     </div>
@@ -24,9 +33,9 @@ const ProductCart = ({ item }) => {
                     </div>
                 </div>
             </Link>
-            <div className=' w-full opacity-0 absolute bottom-0 flex bg-black'>
-                <Link className='w-full text-white p-2 text-center text-lg' onClick={haldleClickBuyFast}>Mua ngay</Link>
-                <Link to={`/product/${item._id}`} className='w-full text-white p-2 text-center text-lg border-l-2 border-white'>Xem chi tiết</Link>
+            <div className=' w-full opacity-0 absolute xl:bottom-0  flex bg-black'>
+                <Link className='w-full text-white p-2 text-center xl:text-lg lg:text-sm sm:hidden lg:block ' onClick={haldleClickBuyFast}>Mua ngay</Link>
+                <Link to={`/product/${item._id}`} className='w-full text-white p-2 text-center xl:text-lg lg:text-sm md:text-xs md:p-1 border-l-2 border-white'>Xem chi tiết</Link>
             </div>
         </div>
 

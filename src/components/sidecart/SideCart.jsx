@@ -10,14 +10,13 @@ const SideCart = () => {
     const loginCar = useSelector(state => state.cart.listCart);
     const listCartProduct = new Array(...loginCar);
     if(!listCartProduct[0]?.productDetailId){
-
         listCartProduct.splice(0, 1);
     }
     const totalQuantity = listCartProduct?.map(item => item.quantity)?.reduce((total, item) => total + Number(item), 0);
     const totalPrice = listCartProduct?.map(item => Number(item.quantity) * Number(item.productDetailId.price)).reduce((total, item) => total + item, 0);
     
     return (
-        <>
+        <div className='sm:hidden lg:block'>
             <div onClick={() => dispatch(openSideCart(null))} className={`w-full h-full bg-black-rgba fixed top-0 z-20 ${!isOpen ? 'hidden' : 'block'}`}></div>
             <div>
                 <div className={`w-[24%] h-full top-0 right-0 fixed z-40 py-14 px-4 bg-white ${!isOpen ? 'translate-x-full' : 'translate-x-0'} ease-in-out duration-1000`}>
@@ -59,7 +58,7 @@ const SideCart = () => {
                         <p className='uppercase'>tổng tiền tạm tính</p>
                         <p><span>{totalPrice?.toLocaleString()}</span>đ</p>
                     </div>
-                    <button className='uppercase text-white bg-black p-2 w-full' >tiến hành đặt hàng</button>
+                    <Link to='checkout' className='uppercase text-white bg-black p-2 w-full block text-center' onClick={() => dispatch(openSideCart(null))} >tiến hành đặt hàng</Link>
                     <Link to= 'cart' className='flex justify-center mt-4' onClick={() => dispatch(openSideCart(null))}>
                         <div className='flex space-x-1'>
                             <span> Xem chi tiết giỏ hàng</span>
@@ -72,7 +71,7 @@ const SideCart = () => {
 
 
 
-        </>
+        </div>
     );
 };
 

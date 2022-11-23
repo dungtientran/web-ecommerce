@@ -41,23 +41,23 @@ const Home = () => {
             </div>
             <SubNav />
             <section className='p-10'>
-                <h1 className='text-3xl font-semibold mt-24 mb-6'>SẢN PHẨM HOT</h1>
+                <h1 className='lg:text-3xl font-semibold mt-24 mb-6 md:text-2xl'>SẢN PHẨM HOT</h1>
                 <ProductList products={hotProduct} />
             </section>
             <section className='p-10'>
-                <h1 className='text-3xl font-semibold mt-24 mb-6'>KEYBOARD</h1>
+                <h1 className='lg:text-3xl font-semibold mt-24 mb-6 md:text-2xl'>KEYBOARD</h1>
                 <ProductList products={keyBoard} />
             </section>
             <section className='p-10'>
-                <h1 className='text-3xl font-semibold mt-24 mb-6'>ĐIỆN THOẠI</h1>
+                <h1 className='lg:text-3xl font-semibold mt-24 mb-6 md:text-2xl'>ĐIỆN THOẠI</h1>
                 <ProductList products={iphone} />
             </section>
             <section className='p-10'>
-                <h1 className='text-3xl font-semibold mt-24 mb-6'>LAPTOP</h1>
+                <h1 className='lg:text-3xl font-semibold mt-24 mb-6 md:text-2xl'>LAPTOP</h1>
                 <ProductList products={laptop} />
             </section>
             <section className='p-10'>
-                <h1 className='text-3xl font-semibold mt-24 mb-6'>CHUỘT</h1>
+                <h1 className='lg:text-3xl font-semibold mt-24 mb-6 md:text-2xl'>CHUỘT</h1>
                 <ProductList products={mouse} />
             </section>
             <BuyFast />

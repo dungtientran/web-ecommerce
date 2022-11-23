@@ -1,12 +1,16 @@
 
 import { unwrapResult } from '@reduxjs/toolkit';
 import { Button, Form, Input, Typography } from 'antd';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getUserInfor, userLogin } from '../redux/slice/authSlice';
 import { loginCart } from '../redux/slice/cartSlice';
 
 const Login = () => {
+    useEffect(() => {
+        window.scroll(0,0)
+    },[])
     const navigate = useNavigate();
     const dispatch = useDispatch(); 
     const onFinish = async (values) => {
@@ -56,12 +60,14 @@ const Login = () => {
                     <Input.Password />
                 </Form.Item>
                 <Form.Item
-                    className='flex justify-center mt-10'
+                    className='flex justify-center mt-10 '
                 >
                     <Button type="primary" htmlType="submit" className='bg-black'>
                         Đăng nhập
                     </Button>
+                    <Link to='/signup' className='ml-6'> Đăng ký? </Link>
                 </Form.Item>
+                
             </Form>
         </>
     );

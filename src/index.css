@@ -13,7 +13,9 @@ a {
     color: black;
 }
 .cardhover:hover {
-    border: 1px solid orange;
+    border-left: 1px solid orange;
+    border-right: 1px solid orange;
+    border-top: 1px solid orange;
 }
 .cardhover:hover > div:last-child{
     opacity: 1;
