@@ -79,11 +79,11 @@ const UserInfor = () => {
                 </div>
                 <div className='w-[50%] space-y-6'>
                     <p className='text-2xl font-bold uppercase'>Thay đổi thông tin cá nhân</p>
-                    <div className='space-y-2'>
+                    {/* <div className='space-y-2'>
                         <p className='text-lg font-semibold'>Đổi Avatar</p>
                         <input type="file" accept='image/png, image.jpg' onChange={(e) => setImg(e.target.value) } />
                         <button className='py-1 px-2 bg-black text-white ml-10 rounded-lg' onClick={handleChangeAvatar}>Thay đổi</button>
-                    </div>
+                    </div> */}
                     <div>
                         <p className='text-lg font-semibold'>Đổi thông tin user</p>
                         <form className='flex flex-col space-y-2' onSubmit={handleChangeUserInfor}>
