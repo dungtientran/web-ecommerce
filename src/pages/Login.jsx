@@ -18,7 +18,7 @@ const Login = () => {
         const tokenResult = unwrapResult(resultToken)
         if(tokenResult) {
             navigate('/');
-            alert('gg');
+            alert('Đăng nhập thành công');
             dispatch(getUserInfor())
             dispatch(loginCart())
         }

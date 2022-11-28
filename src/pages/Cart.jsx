@@ -25,7 +25,7 @@ const Cart = () => {
         listCartProduct.splice(0, 1);
     }
     const totalQuantity = listCartProduct?.map(item => item.quantity)?.reduce((total, item) => total + Number(item), 0);
-    const totalPrice = listCartProduct?.map(item => Number(item.quantity) * Number(item.productDetailId.price)).reduce((total, item) => total + item, 0);
+    const totalPrice = listCartProduct?.map(item => Number(item.quantity) * Number(item.productDetailId?.price)).reduce((total, item) => total + item, 0);
 
     const handleUpdateCart = () => {
         updateQuantityToCart({
@@ -77,16 +77,16 @@ const Cart = () => {
                         {listCartProduct?.map((item, index) => (
                             <div key={index} className='flex justify-between items-center border-t-2 px-1 py-2'>
                                 <div className='w-[20%] py-1'>
-                                    <img src={`https://shope-b3.thaihm.site/${item.productDetailId.listImg[0]}`} alt="Lỗi ảnh" className='w-full' />
+                                    <img src={`https://shope-b3.thaihm.site/${item.productDetailId?.listImg[0]}`} alt="Lỗi ảnh" className='w-full' />
                                 </div>
                                 <div className='w-[80%] space-y-2 flex justify-between items-center'>
                                     <div className='w-1/2 flex justify-between'>
                                         <div className='w-full'>
-                                            <p className='font-thin pb-1 truncate w-[80%]'>{item.productDetailId.productId.productName}</p>
-                                            <p className='text-xs italic font-bold'><span>Màu: </span> <span className='font-semibold ml-1'>{item.productDetailId.color}</span></p>
-                                            <p className='text-xs italic font-bold'><span>Ram: </span> <span className='font-semibold ml-1'>{item.productDetailId.ram}</span></p>
-                                            <p className='text-xs italic font-bold'><span>Rom: </span> <span className='font-semibold ml-1'>{item.productDetailId.rom}</span></p>
-                                            <p className='text-xs italic font-bold'><span>Đơn giá: </span> <span className='font-semibold ml-1'>{item.productDetailId.price?.toLocaleString()} đ</span></p>
+                                            <p className='font-thin pb-1 truncate w-[80%]'>{item.productDetailId?.productId?.productName}</p>
+                                            <p className='text-xs italic font-bold'><span>Màu: </span> <span className='font-semibold ml-1'>{item.productDetailId?.color}</span></p>
+                                            <p className='text-xs italic font-bold'><span>Ram: </span> <span className='font-semibold ml-1'>{item.productDetailId?.ram}</span></p>
+                                            <p className='text-xs italic font-bold'><span>Rom: </span> <span className='font-semibold ml-1'>{item.productDetailId?.rom}</span></p>
+                                            <p className='text-xs italic font-bold'><span>Đơn giá: </span> <span className='font-semibold ml-1'>{item.productDetailId?.price?.toLocaleString()} đ</span></p>
                                             <p className='text-xs italic font-bold'><span>Số lượng: </span> <span className='font-semibold ml-1'>{item.quantity} cái</span></p>
                                         </div>
                                     </div>

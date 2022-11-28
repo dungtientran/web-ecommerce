@@ -10,7 +10,6 @@ import Contact from '../pages/Contact';
 import Filter from '../components/filter/Filter';
 import PageProducts from '../pages/PageProducts';
 import UserInfor from '../pages/UserInfor';
-import ProfileUpdate from '../pages/ProfileUpdate';
 
 const Routers = () => {
     return <Routes>
@@ -25,7 +24,6 @@ const Routers = () => {
         <Route path='filter' element={<Filter />} />
         <Route path='shop/:name' element={<PageProducts />} />
         <Route path='Profile' element={<UserInfor />} />
-        <Route path='profile/update' element={<ProfileUpdate />} />
     </Routes>
 
 };

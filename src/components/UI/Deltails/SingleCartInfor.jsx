@@ -10,6 +10,7 @@ const SingleCartInfor = ({ products, id }) => {
     const [color, setColor] = useState();
     const [rom, setRom] = useState();
     const [ram, setRam] = useState();
+    const [change, setChange] = useState(false);
     const [amount, setAmount] = useState(1);
     const [price, setPrice] = useState(products?.price);
     const isOpen = useSelector((state) => state.cart.openBuyFast);
@@ -77,7 +78,7 @@ const SingleCartInfor = ({ products, id }) => {
                 <p className='text-2xl'>{products?.productName}</p>
                 <p><span className='font-semibold'>Mã sản phẩm: </span> <span className='italic font-thin'>{newID}</span></p>
                 <div className='xl:p-8 lg:p-4 md:p-2 xl:text-4xl lg:text-2xl md:text-lg bg-gray-200 text-center text-red-600'><span className='notificationPrice'>
-                    {!price ?
+                    {!change ?
                         <span>{price?.toLocaleString() || 'Hiện chưa có giá'}</span>
                         :
                         <span>Chọn thông số để xem giá</span>}

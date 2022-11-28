@@ -7,14 +7,14 @@ import NaviSuv from '../components/naviSuv/NaviSuv';
 import { getUserInfor } from '../redux/slice/authSlice';
 
 const UserInfor = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getUserInfor())
+        dispatch(getUserInfor());
     },[dispatch])
     const userInfor = useSelector(state => state.auth.userInfor)
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
-    const [img, setImg] = useState()
+    const [img, setImg] = useState();
     const [name, setName] = useState();
     const [fullName, setFullName] = useState();
     const [phone, setPhone] = useState();
@@ -37,12 +37,14 @@ const UserInfor = () => {
             sex: sex,
             dateOfBirth: birth
         })
+        dispatch(getUserInfor())
+
     }
     const handleChangePassword = async (e) => {
         e.preventDefault()
         const response = await changePassword({
             oldPass: oldPass,
-            newPass: newPass
+            newPass: newPass,
         })
         if(response.status === 200) {
             localStorage.clear()
@@ -50,8 +52,6 @@ const UserInfor = () => {
             alert('Đổi thành công, Đăng nhập lại')
         }
     }
-
-
 
     return (
         <div>
@@ -91,7 +91,7 @@ const UserInfor = () => {
                             <input onChange={(e) => setFullName(e.target.value)} className='bg-gray-100 rounded-lg px-2 py-2 w-[50%] shadow-inner outline-none' type="text" placeholder='Họ tên đầy đủ' />
                             <input onChange={(e) => setPhone(e.target.value)} className='bg-gray-100 rounded-lg px-2 py-2 w-[50%] shadow-inner outline-none' type="text" placeholder='Số điện thoại' />
                             <input onChange={(e) => setSex(e.target.value)} className='bg-gray-100 rounded-lg px-2 py-2 w-[50%] shadow-inner outline-none' type="text" placeholder='Giới tính' />
-                            <input onChange={(e) => setBirth(e.target.value)} className='bg-gray-100 rounded-lg px-2 py-2 w-[50%] shadow-inner outline-none' type="text" placeholder='Ngày sinh' />
+                            <input onChange={(e) => setBirth(e.target.value)} className='bg-gray-100 rounded-lg px-2 py-2 w-[50%] shadow-inner outline-none' type="text" placeholder='Ngày sinh. Cú pháp Năm/Tháng/Ngày' />
                             <button className='w-[10%] py-1 px-2 bg-black text-white rounded-lg'>Đổi</button>
                         </form>
                     </div>

@@ -13,8 +13,8 @@ const SideCart = () => {
         listCartProduct.splice(0, 1);
     }
     const totalQuantity = listCartProduct?.map(item => item.quantity)?.reduce((total, item) => total + Number(item), 0);
-    const totalPrice = listCartProduct?.map(item => Number(item.quantity) * Number(item.productDetailId.price)).reduce((total, item) => total + item, 0);
-    
+    const totalPrice = listCartProduct?.map(item => Number(item.quantity) * Number(item.productDetailId?.price))
+    console.log(totalPrice);
     return (
         <div className='sm:hidden lg:block'>
             <div onClick={() => dispatch(openSideCart(null))} className={`w-full h-full bg-black-rgba fixed top-0 z-20 ${!isOpen ? 'hidden' : 'block'}`}></div>
@@ -29,21 +29,21 @@ const SideCart = () => {
                             <ExportOutlined />
                         </Link>
                     </div>
-                    <div className='py-4'>
+                    <div className='py-4 h-[60%] overflow-hidden overflow-y-scroll'>
                         {(listCartProduct?.length > 0) ? (
-                            <div className='overflow-y-scroll'>
+                            <div>
                                 {listCartProduct?.map((item, index) => (
                                     <div key={index} className='flex justify-between items-center border-t-2 px-1 py-2'>
                                         <div className='w-[16%]'>
-                                            <img src={`https://shope-b3.thaihm.site/${item.productDetailId.listImg[0]}`} alt={`${item.productDetailId.productName}`} className='w-full' />
+                                            <img src={`https://shope-b3.thaihm.site/${item.productDetailId?.listImg[0]}`} alt={`${item.productDetailId?.productName}`} className='w-full' />
                                         </div>
                                         <div className='w-[75%] space-y-2 flex justify-between items-center'>
                                             <div className='space-y-2'>
-                                                <p className='font-thin'>{item.productDetailId.productId.productName}</p>
-                                                <p className='text-xs italic'><span>Màu: </span> <span className='font-semibold'>{item.productDetailId.color}</span></p>
-                                                <p className='text-xs italic'><span>Ram: </span> <span className='font-semibold'>{item.productDetailId.ram}</span></p>
-                                                <p className='text-xs italic'><span>Rom: </span> <span className='font-semibold'>{item.productDetailId.rom}</span></p>
-                                                <p className='text-xs italic'><span>Giá: </span> <span className='font-semibold'>{item.productDetailId.price?.toLocaleString()}</span></p>
+                                                <p className='font-thin'>{item.productDetailId?.productId?.productName}</p>
+                                                <p className='text-xs italic'><span>Màu: </span> <span className='font-semibold'>{item.productDetailId?.color}</span></p>
+                                                <p className='text-xs italic'><span>Ram: </span> <span className='font-semibold'>{item.productDetailId?.ram}</span></p>
+                                                <p className='text-xs italic'><span>Rom: </span> <span className='font-semibold'>{item.productDetailId?.rom}</span></p>
+                                                <p className='text-xs italic'><span>Giá: </span> <span className='font-semibold'>{item.productDetailId?.price?.toLocaleString()}</span></p>
                                                 <p className='text-xs italic'><span>Số lượng: </span> <span className='font-semibold'>{item.quantity}</span></p>
                                             </div>
                                         </div>

@@ -54,6 +54,5 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.2.2"
-  },
-  "homepage": "http://dung.github.io/Web_Api"
+  }
 }
