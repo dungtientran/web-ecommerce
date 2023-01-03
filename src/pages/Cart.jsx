@@ -25,7 +25,7 @@ const Cart = () => {
         listCartProduct.splice(0, 1);
     }
     const totalQuantity = listCartProduct?.map(item => item.quantity)?.reduce((total, item) => total + Number(item), 0);
-    const totalPrice = listCartProduct?.map(item => Number(item.quantity) * Number(item.productDetailId?.price)).reduce((total, item) => total + item, 0);
+    const totalPrice = listCartProduct?.map(item => Number(item.quantity) * Number(item.productDetailId?.price))?.reduce((total, item) => total + item, 0);
 
     const handleUpdateCart = () => {
         updateQuantityToCart({

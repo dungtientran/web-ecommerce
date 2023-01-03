@@ -13,10 +13,7 @@ const SideCart = () => {
         listCartProduct.splice(0, 1);
     }
     const totalQuantity = listCartProduct?.map(item => item.quantity)?.reduce((total, item) => total + Number(item), 0);
-    const totalPrice = listCartProduct?.map(item => Number(item.quantity) * Number(item.productDetailId?.price))
-
-    console.log(totalPrice);
-
+    const totalPrice = listCartProduct?.map(item => Number(item.quantity) * Number(item.productDetailId?.price))?.reduce((total, item) => total + item, 0);
     return (
         <div className='sm:hidden lg:block'>
             <div onClick={() => dispatch(openSideCart(null))} className={`w-full h-full bg-black-rgba fixed top-0 z-20 ${!isOpen ? 'hidden' : 'block'}`}></div>
