@@ -9,9 +9,7 @@
 }
 @import 'antd/dist/antd.css';
 
-a {
-    color: black;
-}
+
 .cardhover:hover {
     border-left: 1px solid orange;
     border-right: 1px solid orange;

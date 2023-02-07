@@ -56,7 +56,7 @@ const UiFilter = ({ productName }) => {
                 </div>
             </div>
             <div className='pt-12'>
-            {listProductUi.length > 0 ? (
+            {listProductUi?.length > 0 ? (
                     <>
                         <ProductList products={currentPost} />
                         <Paginations postPage={postPage} totalPost={listProductUi.length} paginate={paginate} />
